@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Remote Patient Monitoring</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class', // Enable class-based dark mode
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15', // Vibrant Yellow
+            'primary-dark': '#EAB308', // Darker Yellow (for hover states)
+            'primary-light': '#FEF9C3', // Light Yellow (for subtle backgrounds/borders on primary)
+            
+            accent: '#F59E0B', // Amber 500 (distinct accent)
+            'accent-dark': '#D97706', // Amber 600
+
+            // Light Theme Colors (Default)
+            neutral_bg: '#F3F4F6', // Gray 100 
+            neutral_card_bg: '#FFFFFF', // White 
+            neutral_border: '#D1D5DB', // Gray 300
+            text_default: '#1F2937',     // Gray 800
+            text_muted: '#4B5563', // Gray 600
+            text_on_primary: '#1E293B',   // Slate 800 (dark text for on primary yellow elements)
+            text_on_accent: '#FFFFFF', // White text for on accent color
+
+            // Dark Theme Colors
+            dark_neutral_bg: '#0F172A', // Slate 900
+            dark_neutral_card_bg: '#1E293B', // Slate 800
+            dark_neutral_border: '#334155', // Slate 700
+            dark_text_default: '#E2E8F0', // Slate 200
+            dark_text_muted: '#94A3B8', // Slate 400
+            // text_on_primary remains dark_text_on_primary for yellow bg in dark mode
+            // text_on_accent remains white for amber bg in dark mode
+
+            // Status colors - keeping them distinct, will apply dark mode variants in components or specific dark status colors if needed
+            status_green: '#10B981', // Emerald 500
+            status_yellow: '#FBBF24', // Amber 400
+            status_red: '#EF4444', // Red 500
+            status_blue: '#3B82F6', // Blue 500
+            status_purple: '#8B5CF6', // Violet 500
+            
+            // Dark mode Alert colors
+            dark_bg_blue_50: '#1E3A8A', // e.g., blue-800 or a darker custom shade
+            dark_border_blue_500: '#60A5FA', // e.g., blue-400
+            dark_text_blue_700: '#93C5FD', // e.g., blue-300
+
+            dark_bg_green_50: '#065F46', // e.g., emerald-800
+            dark_border_green_500: '#34D399', // e.g., emerald-400
+            dark_text_green_700: '#A7F3D0', // e.g., emerald-300
+
+            dark_bg_yellow_50: '#78350F', // e.g., amber-800
+            dark_border_yellow_500: '#FBBF24', // e.g., amber-400
+            dark_text_yellow_700: '#FDE68A', // e.g., amber-300
+
+            dark_bg_red_50: '#991B1B', // e.g., red-800
+            dark_border_red_500: '#F87171', // e.g., red-400
+            dark_text_red_700: '#FCA5A5', // e.g., red-300
+
+
+            // Standard white and black if needed directly
+            white: '#FFFFFF',
+            black: '#000000',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* For webkit-based browsers (Chrome, Safari) */
+    /* Light theme scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #E5E7EB; /* gray-200, for light track */
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #FACC15; /* primary color */
+        border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #EAB308; /* primary-dark color */
+    }
+
+    /* Dark theme scrollbar for webkit */
+    html.dark ::-webkit-scrollbar-track {
+        background: #1E293B; /* dark_neutral_card_bg */
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+        background: #D97706; /* accent-dark, good contrast on dark bg */
+    }
+    html.dark ::-webkit-scrollbar-thumb:hover {
+        background: #F59E0B; /* accent */
+    }
+
+    /* For Firefox */
+    /* Light theme scrollbar */
+    html {
+      scrollbar-width: thin; 
+      scrollbar-color: #FACC15 #E5E7EB; /* thumb and track (primary gray-200) */
+    }
+    /* Dark theme scrollbar for Firefox */
+    html.dark {
+      scrollbar-color: #D97706 #1E293B; /* accent-dark and dark_neutral_card_bg */
+    }
+
+    /* General body styling for better aesthetics */
+    body {
+      font-family: 'Inter', sans-serif; 
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    /* Custom animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.5s ease-out forwards;
+    }
+  </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.1.0",
+    "react-dom/": "https://esm.sh/react-dom@19.1.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@7.6.2",
+    "react/": "https://esm.sh/react@19.1.0/",
+    "@heroicons/react/": "https://esm.sh/@heroicons/react@2.2.0/",
+    "@google/genai": "https://esm.sh/@google/genai@1.6.0",
+    "react-markdown": "https://esm.sh/react-markdown@10.1.0",
+    "remark-gfm": "https://esm.sh/remark-gfm@4.0.1",
+    "react-router": "https://esm.sh/react-router@^7.6.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>

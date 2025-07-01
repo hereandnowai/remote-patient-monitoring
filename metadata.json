@@ -1,0 +1,8 @@
+{
+  "name": "Remote Patient Monitoring",
+  "description": "A web application for remote patient monitoring, allowing users to log vital signs, manage medications, track symptoms, access educational content, request telehealth appointments, and interact with an AI health assistant.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "prompt": ""
+}
